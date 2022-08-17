@@ -1,11 +1,11 @@
 <?php
 //editando un registro de la base de datos con pdo
 
-require_once ('conexion.php');
+include ('conexion.php');
 $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//$id = $_GET['ID'];
+$id = $_GET['ID'];
 $consulta = $PDO->prepare("SELECT * FROM producto WHERE ID = :ID");
-$consulta->bindParam(':ID', $id);
+$consulta->bindValue(':ID', $id);
 $consulta->execute();
 $fila = $consulta->fetch(PDO::FETCH_ASSOC);
 
@@ -29,7 +29,7 @@ $fecha_actual= date("Y-m-d H:i:s");
     <div class="row"> 
         <div class="col-md-3">
             <h1>ACTUALIZAR</h1>
-            <form action="update.php" method="post" enctype="multipart/form-data">
+            <form action="update.php" method="post">
                 <input type="text" class="form-control" name="Nombre" value="<?php echo $fila['Nombre']; ?>" placeholder="Nombre">
                 <br>
                 <input type="text" class="form-control" name="descripcion" value="<?php echo $fila['descripcion']; ?>" placeholder="Descripcion">
