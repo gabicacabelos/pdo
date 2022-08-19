@@ -1,8 +1,9 @@
 <?php
+
 //conectar a la base de datos producto mediante pdo y mostrar los datos
-$PDO= new PDO("mysql:host=localhost;port=3306; dbname=crud_productos", "root", "");
+$PDO= new PDO("mysql:host=localhost;port=3306; dbname=almacen", "root", "");
 $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$consulta = $PDO->prepare("SELECT * FROM producto order by ID asc");
+$consulta = $PDO->prepare("SELECT * FROM producto order by id asc");
 $consulta->execute();
 $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
 
@@ -73,14 +74,14 @@ $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
                 <tbody>
                     <?php foreach($resultado as  $fila): ?>
                     <tr>
-                        <td><?php echo $fila['ID']; ?></td>
+                        <td><?php echo $fila['id']; ?></td>
                         <td><?php echo $fila['Nombre']; ?></td>
                         <td><?php echo $fila['descripcion']; ?></td>
                         <td><?php echo $fila['imagen']; ?></td>
                         <td><?php echo $fila['precio']; ?></td>
                         <td><?php echo $fila['fecha_creacion']; ?></td>
-                        <td><a href="editar.php?ID=<?php echo $fila['ID']; ?>"class="btn btn-info">Editar</a></td>
-                        <td><a href="eliminar.php?ID=<?php echo $fila['ID']; ?>"class="btn btn-danger">Eliminar</a></td>
+                        <td><a href="editar.php?id=<?php echo $fila['id']; ?>"class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminar.php?id=<?php echo $fila['id']; ?>"class="btn btn-danger">Eliminar</a></td>
                         
                     </tr>
                     <?php endforeach; ?>

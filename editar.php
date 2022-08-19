@@ -3,9 +3,9 @@
 
 include ('conexion.php');
 $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$id = $_GET['ID'];
-$consulta = $PDO->prepare("SELECT * FROM producto WHERE ID = :ID");
-$consulta->bindValue(':ID', $id);
+$id = $_GET['id'];
+$consulta = $PDO->prepare("SELECT * FROM producto WHERE id = :id");
+$consulta->bindValue(':id', $id);
 $consulta->execute();
 $fila = $consulta->fetch(PDO::FETCH_ASSOC);
 
@@ -29,7 +29,7 @@ $fecha_actual= date("Y-m-d H:i:s");
     <div class="row"> 
         <div class="col-md-3">
             <h1>ACTUALIZAR</h1>
-            <form action="update.php" method="post">
+            <form action="update.php" method="get">
                 <input type="text" class="form-control" name="Nombre" value="<?php echo $fila['Nombre']; ?>" placeholder="Nombre">
                 <br>
                 <input type="text" class="form-control" name="descripcion" value="<?php echo $fila['descripcion']; ?>" placeholder="Descripcion">
@@ -40,6 +40,7 @@ $fecha_actual= date("Y-m-d H:i:s");
                 <br>
                 <input type="date" class="form-control" name="fecha_creacion" value="<?php echo $fila['fecha_creacion']; ?>" placeholder="Fecha de creacion">
                 <br>
+                <input type="hidden" class="form-control" id= "id" name="id" value="<?php echo $id; ?>" disabled>
                 <button type="submit" class="btn btn-primary">Guardar</button>
         
     </form>
