@@ -21,5 +21,3 @@ header("Location: producto.php");
 
 
 ?>
-
-

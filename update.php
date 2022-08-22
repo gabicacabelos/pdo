@@ -2,12 +2,12 @@
 //actualizar un registro de la base de datos con pdo y con id autoincrementable
 include ('conexion.php');
 $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$id = $_GET['id'];
-$nombre = $_GET['Nombre'];
-$descripcion = $_GET['descripcion'];
-$imagen = $_GET['imagen'];
-$precio = $_GET['precio'];
-$fecha_creacion = $_GET['fecha_creacion'];
+$id = $_POST['id'];
+$nombre = $_POST['Nombre'];
+$descripcion = $_POST['descripcion'];
+$imagen = $_POST['imagen'];
+$precio = $_POST['precio'];
+$fecha_creacion = $_POST['fecha_creacion'];
 $consulta = $PDO->prepare("UPDATE producto SET Nombre = :Nombre, descripcion = :descripcion, imagen = :imagen, precio = :precio, fecha_creacion = :fecha_creacion WHERE id = :id");
 $consulta->bindParam(':Nombre', $nombre);
 $consulta->bindParam(':descripcion', $descripcion);
