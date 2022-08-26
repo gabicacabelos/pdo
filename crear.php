@@ -15,9 +15,28 @@ $descripcion = $_POST['descripcion'];
 $imagen = $_POST['imagen'];
 $precio = $_POST['precio'];
 $fecha_creacion = $_POST['fecha_creacion'];
-$consulta->execute();
+//$consulta->execute();
+if (empty($nombre) || empty($descripcion) || empty($precio) || empty($fecha_creacion)) {
+    //mostrar mensaje de error con html
+    echo "<script>alert('No se pudo crear el producto, por favor verifique los datos ingresados'); window.location.href='producto.php';</script>";
 
-header("Location: producto.php");
+} else {
+    //mostrar mensaje de exito con html
+   
+    $consulta->execute();
+   
+    header("Location: producto.php");
+}
+
+
+
+
+
+
+
+
+
+
 
 
 ?>

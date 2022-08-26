@@ -47,11 +47,24 @@ $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
                     <input type="text" class="form-control" name="fecha_creacion" value="<?php echo $fecha_actual?>" placeholder="Fecha de creacion">
                 <br> 
                 <button type="submit" class="btn btn-primary">Guardar</button>
+               
             </form>
 
         </div>
         <div class="col-md-8">
-            <H1>TABLA DE PRODUCTOS</H1>
+        
+            <H1>TABLA DE PRODUCTOS</H1><form class="col-md-3" action="buscar.php" method="get">
+            <input type="text"class="form-control"  name="buscar" placeholder="Nombre del producto">
+            <input type="submit"class="btn btn-primary" value="Buscar" name="buscador">
+            </form>
+            
+            
+           <!--  <form class="col-md-3" action="buscar.php" method="post">
+            <input type="text"class="form-control" id="buscar" name="buscar" placeholder="Nombre del producto">
+            <input type="submit"class="btn btn-primary" id="buscador" value="Buscar" name="buscador">
+            </form> -->
+           
+            
             <table class="table">
                 <thead class="thead">
                     <tr>
